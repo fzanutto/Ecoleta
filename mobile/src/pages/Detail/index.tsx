@@ -33,7 +33,6 @@ const Detail = () => {
 
     const routeParams = route.params as Params
 
-
     useEffect(() => {
         api.get(`points/${routeParams.point_id}`).then(response => {
             setData(response.data)
@@ -46,14 +45,13 @@ const Detail = () => {
 
     function handleComposeMail() {
         MailComposer.composeAsync({
-            subject: 'Interesse na ablubluble blubluble',
+            subject: 'Ecoleta',
             recipients: [data.point.email]
         })
     }
 
     function handleWhatsapp(){
-
-        Linking.openURL(`whatsapp://send?phone=${data.point.whatsapp}&text=TESTETTETETEETET`)
+        Linking.openURL(`whatsapp://send?phone=${data.point.whatsapp}`)
     }
 
     if (!data.point) {

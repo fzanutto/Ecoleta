@@ -63,12 +63,10 @@ class PointsController {
 
         }
 
-        return res.json({serializedPoint, items})
+        return res.json({point: serializedPoint, items})
     }
 
     async index (req: Request, res: Response) {
-        // cidade, uf, items
-
         const {city, uf, items} = req.query
 
         const parsedItem = String(items).split(',').map(item => Number(item.trim()))
@@ -84,9 +82,10 @@ class PointsController {
         const serializedPoints = points.map(point => {
             return {
                 ...point,
-                image_url: `http://192.168.1.23/uploads/${point.image}`
+                image_url: `http://192.168.1.23:3333/uploads/${point.image}`
             }
         })
+
         res.json(serializedPoints)
 
     }

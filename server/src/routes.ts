@@ -25,7 +25,7 @@ routes.post('/points',
             whatsapp: Joi.string().required(),
             latitude: Joi.number().required(),
             longitude: Joi.number().required(),
-            cidade: Joi.string(),
+            city: Joi.string().required(),
             uf: Joi.string().required().max(2),
             items: Joi.string(),
         })
