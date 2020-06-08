@@ -9,7 +9,6 @@ import * as Location from 'expo-location'
 
 import api from '../../services/api'
 
-
 interface Item {
     id: number,
     title: string,
@@ -27,7 +26,7 @@ interface Point {
 
 interface Params {
     uf: string,
-    cidade: string
+    city: string
 }
 
 const Points = () => {
@@ -41,7 +40,6 @@ const Points = () => {
 
     const route = useRoute()
     const routeParams = route.params as Params
-
 
     useEffect(() => {
         async function loadPosition() {
@@ -71,8 +69,8 @@ const Points = () => {
     useEffect(() => {
         api.get('points', {
             params: {
-                city: route.params.city,
-                uf: route.params.uf,
+                city: routeParams.city,
+                uf: routeParams.uf,
                 items: selectedItems
             }
         }).then(points => {setPoints(points.data)})
